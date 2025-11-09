@@ -90,3 +90,13 @@ def parse_date(date_string: str) -> date:
         return datetime.strptime(date_string, "%d/%m/%Y").date()
     except ValueError:
         return datetime.strptime(date_string, "%d/%m/%y").date()
+
+def save_projects(filename: str, projects: list[Project]) -> None:
+    """Save projects to a file"""
+    with open(filename, "w", encoding="utf-8") as out_file:
+        for project in projects:
+            date_str = project.start_date.strftime("%d/%m/%Y")
+            line = (f"{project.name}\t{date_str}\t{project.priority}\t"
+                    f"{project.cost_estimate:.2f}\t"
+                    f"{project.completion_percentage}")
+            print(line, file=out_file)
