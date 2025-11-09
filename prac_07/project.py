@@ -100,3 +100,27 @@ def save_projects(filename: str, projects: list[Project]) -> None:
                     f"{project.cost_estimate:.2f}\t"
                     f"{project.completion_percentage}")
             print(line, file=out_file)
+
+def display_projects(projects: list[Project]) -> None:
+    """Display complete and incomplete projects by format"""
+    incomplete_projects = [p for p in projects if not p.is_complete()]
+    complete_projects = [p for p in projects if p.is_complete()]
+
+    incomplete_projects.sort(key=sort_by_priority_and_start)
+    complete_projects.sort(key=sort_by_priority_and_start)
+
+    print("Incomplete projects: ")
+    for project in incomplete_projects:
+        print(f"  {project}")
+    print("Completed projects: ")
+    for project in complete_projects:
+        print(f"  {project}")
+
+def sort_by_priority_and_start(project: Project):
+    """For sorting projects by priority"""
+    return project.priority, project.start_date
+
+
+def get_start_date(project: Project):
+    """For sorting projects by date"""
+    return project.start_date
