@@ -170,3 +170,9 @@ def update_project(projects: list[Project]) -> None:
     new_priority_text = input("New Priority: ")
     if new_priority_text.strip():
         project.priority = int(new_priority_text)
+
+def ask_save_before_quit(filename: str, projects: list[Project]) -> None:
+    """Ask for save before quit"""
+    answer = input(f"Would you like to save to {filename}? ")
+    if answer.lower().startswith("y"):
+        save_projects(filename, projects)
