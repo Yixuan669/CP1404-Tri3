@@ -47,3 +47,12 @@ def add_new_guitars(guitars):
         guitars.append(new_guitar)
         print(f"{new_guitar} added.")
         name = input("Name: ")
+
+def save_guitars(filename, guitars):
+    """Save all guitars to the CSV file."""
+    with open(filename, "w", encoding="utf-8") as out_file:
+        for guitar in guitars:
+            print(f"{guitar.name},{guitar.year},{guitar.cost}", file=out_file)
+
+if __name__ == "__main__":
+    main()
