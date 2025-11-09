@@ -29,3 +29,38 @@ class Project:
         return (f"{self.name}, start: {date_str}, priority {self.priority}, "
                 f"estimate: ${self.cost_estimate:.2f}, "
                 f"completion: {self.completion_percentage}%")
+
+def main():
+    """Create and run the main function"""
+    print("Welcome to Pythonic Project Management")
+    projects = load_projects(FILENAME)
+    print(f"Loaded {len(projects)} projects from {FILENAME}")
+
+    choice = ""
+    while choice != "Q":
+        print(MENU)
+        choice = input(">>> ").strip().upper()
+        if choice == "L":
+            filename = input("Filename to load projects from: ")
+            projects = load_projects(filename)
+            print(f"Loaded {len(projects)} projects from {filename}")
+        elif choice == "S":
+            filename = input("Filename to save projects to: ")
+            save_projects(filename, projects)
+            print(f"Saved {len(projects)} projects to {filename}")
+        elif choice == "D":
+            display_projects(projects)
+        elif choice == "F":
+            filter_projects_by_date(projects)
+        elif choice == "A":
+            add_new_project(projects)
+        elif choice == "U":
+            update_project(projects)
+        elif choice == "Q":
+            # 跳出循环，下面统一处理退出
+            break
+        else:
+            print("Invalid choice")
+
+    ask_save_before_quit(FILENAME, projects)
+    print("Thank you for using custom-built project management software.")
