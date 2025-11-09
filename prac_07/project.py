@@ -133,3 +133,22 @@ def filter_projects_by_date(projects: list[Project]) -> None:
     filtered.sort(key=get_start_date)
     for project in filtered:
         print(project)
+
+def add_new_project(projects: list[Project]) -> None:
+    """Add new projects to a file"""
+    print("Let's add a new project")
+    name = input("Name: ")
+    date_string = input("Start date (dd/mm/yy): ")
+    start_date = parse_date(date_string)
+    priority = get_int("Priority: ")
+    cost_text = input("Cost estimate: $")
+    cost_estimate = float(cost_text)
+    completion_percentage = get_int("Percent complete: ")
+    new_project = Project(name, start_date, priority,
+                          cost_estimate, completion_percentage)
+    projects.append(new_project)
+
+def get_int(prompt: str) -> int:
+    """Turn a string into an integer"""
+    value_text = input(prompt)
+    return int(value_text)
