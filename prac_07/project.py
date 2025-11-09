@@ -144,8 +144,7 @@ def add_new_project(projects: list[Project]) -> None:
     cost_text = input("Cost estimate: $")
     cost_estimate = float(cost_text)
     completion_percentage = get_int("Percent complete: ")
-    new_project = Project(name, start_date, priority,
-                          cost_estimate, completion_percentage)
+    new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
     projects.append(new_project)
 
 def get_int(prompt: str) -> int:
