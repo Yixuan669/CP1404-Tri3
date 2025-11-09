@@ -124,3 +124,12 @@ def sort_by_priority_and_start(project: Project):
 def get_start_date(project: Project):
     """For sorting projects by date"""
     return project.start_date
+
+def filter_projects_by_date(projects: list[Project]) -> None:
+    """Filter projects by user input."""
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    filter_date = parse_date(date_string)
+    filtered = [p for p in projects if p.start_date >= filter_date]
+    filtered.sort(key=get_start_date)
+    for project in filtered:
+        print(project)
