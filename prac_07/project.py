@@ -64,3 +64,29 @@ def main():
 
     ask_save_before_quit(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
+
+def load_projects(filename: str) -> list[Project]:
+    """Load projects from a file"""
+    projects = []
+    with open(filename, "r", encoding="utf-8") as in_file:
+        for line in in_file:
+            line = line.strip()
+            if not line:
+                continue
+            parts = line.split("\t")
+            name = parts[0]
+            start_date = parse_date(parts[1])
+            priority = int(parts[2])
+            cost_estimate = float(parts[3])
+            completion_percentage = int(parts[4])
+            project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+            projects.append(project)
+    return projects
+
+def parse_date(date_string: str) -> date:
+    """Turn a date string into a date"""
+    date_string = date_string.strip()
+    try:
+        return datetime.strptime(date_string, "%d/%m/%Y").date()
+    except ValueError:
+        return datetime.strptime(date_string, "%d/%m/%y").date()
