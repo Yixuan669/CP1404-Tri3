@@ -151,3 +151,22 @@ def get_int(prompt: str) -> int:
     """Turn a string into an integer"""
     value_text = input(prompt)
     return int(value_text)
+
+def update_project(projects: list[Project]) -> None:
+    """Update single project percentage and priorities"""
+    for index, project in enumerate(projects):
+        print(f"{index} {project}")
+    choice_text = input("Project choice: ")
+    if not choice_text:
+        return
+    choice = int(choice_text)
+    if choice < 0 or choice >= len(projects):
+        return
+    project = projects[choice]
+    print(project)
+    new_percentage_text = input("New Percentage: ")
+    if new_percentage_text.strip():
+        project.completion_percentage = int(new_percentage_text)
+    new_priority_text = input("New Priority: ")
+    if new_priority_text.strip():
+        project.priority = int(new_priority_text)
