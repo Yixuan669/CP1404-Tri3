@@ -69,6 +69,7 @@ def load_projects(filename: str) -> list[Project]:
     """Load projects from a file"""
     projects = []
     with open(filename, "r", encoding="utf-8") as in_file:
+        next(in_file)
         for line in in_file:
             line = line.strip()
             if not line:
@@ -176,3 +177,6 @@ def ask_save_before_quit(filename: str, projects: list[Project]) -> None:
     answer = input(f"Would you like to save to {filename}? ")
     if answer.lower().startswith("y"):
         save_projects(filename, projects)
+
+if __name__ == "__main__":
+    main()
