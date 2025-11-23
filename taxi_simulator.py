@@ -40,6 +40,14 @@ def main():
                 print(f"Your {current_taxi.name} trip cost you ${trip_cost:.2f}")
                 bill_to_date += trip_cost
 
+        else:
+            print("Invalid option")
+
+        print(f"Bill to date: ${bill_to_date:.2f}")
+        print(MENU)
+        choice = input(">>> ").lower()
+
+
 def display_taxis(taxis):
     """Display all taxis with their index."""
     for i, taxi in enumerate(taxis):
