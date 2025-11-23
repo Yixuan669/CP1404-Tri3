@@ -16,3 +16,7 @@ class Band:
         """Add a musician to the band."""
         if isinstance(musician, Musician):
             self.musicians.append(musician)
+
+    def play(self):
+        """Return a string with each musician playing their first instrument."""
+        return "\n".join(musician.play() for musician in self.musicians)
