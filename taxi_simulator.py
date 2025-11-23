@@ -25,3 +25,8 @@ def main():
                     print("Invalid taxi choice")
             except ValueError:
                 print("Invalid taxi choice")
+
+def display_taxis(taxis):
+    """Display all taxis with their index."""
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
