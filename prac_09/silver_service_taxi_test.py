@@ -8,3 +8,6 @@ def main():
     taxi.start_fare()
     taxi.drive(18)
     fare = taxi.get_fare()
+
+    print(taxi)
+    print(f"Fare for 18km trip: ${fare:.2f}")
