@@ -47,6 +47,9 @@ def main():
         print(MENU)
         choice = input(">>> ").lower()
 
+    print(f"Total trip cost: ${bill_to_date:.2f}")
+    print("Taxis are now:")
+    display_taxis(taxis)
 
 def display_taxis(taxis):
     """Display all taxis with their index."""
