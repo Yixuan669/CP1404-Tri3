@@ -55,3 +55,6 @@ def display_taxis(taxis):
     """Display all taxis with their index."""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
+
+if __name__ == "__main__":
+    main()
