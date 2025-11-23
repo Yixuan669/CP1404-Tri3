@@ -15,3 +15,8 @@ class SilverServiceTaxi(Taxi):
     def __str__(self):
         """String representation of the SilverServiceTaxi"""
         return f"{super().__str__()} plus flagfall of ${self.flagfall:.2f}"
+
+    def get_fare(self):
+        """Return the price for the taxi trip, including flagfall."""
+        base_fare = super().get_fare()
+        return base_fare + self.flagfall
