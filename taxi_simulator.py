@@ -26,6 +26,20 @@ def main():
             except ValueError:
                 print("Invalid taxi choice")
 
+        elif choice == "d":
+            if current_taxi is None:
+                print("You need to choose a taxi before you can drive")
+            else:
+                try:
+                    distance = float(input("Drive how far? "))
+                except ValueError:
+                    distance = 0
+                current_taxi.start_fare()
+                current_taxi.drive(distance)
+                trip_cost = current_taxi.get_fare()
+                print(f"Your {current_taxi.name} trip cost you ${trip_cost:.2f}")
+                bill_to_date += trip_cost
+
 def display_taxis(taxis):
     """Display all taxis with their index."""
     for i, taxi in enumerate(taxis):
