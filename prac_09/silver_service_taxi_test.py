@@ -11,3 +11,11 @@ def main():
 
     print(taxi)
     print(f"Fare for 18km trip: ${fare:.2f}")
+
+    assert abs(fare - 48.78) < 0.01, f"Expected 48.78, got {fare:.2f}"
+
+    print("Test passed")
+
+
+if __name__ == "__main__":
+    main()
