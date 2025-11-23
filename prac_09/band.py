@@ -11,3 +11,8 @@ class Band:
     def __str__(self):
         """Return a string representation of the Band and its musicians."""
         return f"{self.name} ({', '.join(str(m) for m in self.musicians)})"
+
+    def add(self, musician):
+        """Add a musician to the band."""
+        if isinstance(musician, Musician):
+            self.musicians.append(musician)
